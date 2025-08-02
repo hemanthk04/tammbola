@@ -5,7 +5,12 @@ export default function App() {
   const [calledNumbers, setCalledNumbers] = useState([]);
   const [currentNumber, setCurrentNumber] = useState(null);
 
-  
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  }, []);
+
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -45,13 +50,22 @@ export default function App() {
       {/* Current Number Display */}
       <div className="flex flex-col items-center">
         <div className="w-64 h-64 md:w-96 md:h-96 rounded-full border-8 md:border-[12px] border-gray-200 flex items-center justify-center">
-          <span className="text-8xl md:text-[12rem] font-bold">
+          <span className="text-8xl md:text-[12rem] font-semibold">
             {currentNumber ?? "--"}
           </span>
         </div>
-        <p className="mt-4 text-gray-500 text-sm">
-          click Enter ⏎ for the Next Number
-        </p>
+        {isTouchDevice ? (
+          <button
+            onClick={callNextNumber}
+            className="mt-4 px-8 py-2 bg-[#ff5309] text-white rounded-md text-sm font-semibold shadow-md active:scale-95 transition"
+          >
+            Call Next Number
+          </button>
+        ) : (
+          <p className="mt-4 text-gray-500 text-sm">
+            click Enter ⏎ for the Next Number
+          </p>
+        )}
       </div>
 
       {/* Number Grid */}
