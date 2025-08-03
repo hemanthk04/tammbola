@@ -33,7 +33,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#ff5309] flex flex-col items-center justify-between pt-6">
+    <div className="min-h-screen overflow-hidden scrollbar-hide bg-white text-[#ff5309] flex flex-col items-center justify-between pt-6">
       {/* Header */}
       <div className="px-8 w-full flex justify-between items-center mb-6 text-sm font-semibold">
         <span className="text-[#ff5309] font-bold text-lg">Tammbola</span>
