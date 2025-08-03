@@ -31,22 +31,36 @@ export default function App() {
     setCalledNumbers([...calledNumbers, next]);
     setCurrentNumber(next);
   };
+  const resetGame = () => {
+    setCalledNumbers([]);
+    setCurrentNumber(null);
+  };
+
 
   return (
-    <div className="min-h-screen overflow-hidden scrollbar-hide bg-white text-[#ff5309] flex flex-col items-center justify-between pt-6">
+    <div className="min-h-screen overflow-hidden scrollbar-hide bg-white text-[#ff5309] flex flex-col items-center justify-between pt-4">
       {/* Header */}
       <div className="px-8 w-full flex justify-between items-center text-sm font-semibold">
         <span className="text-[#ff5309] font-bold text-lg">Tammbola</span>
-        <a
-          href="https://github.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-600 hover:underline"
-        >
-          Check Github ↗
-        </a>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={resetGame}
+            className="px-4 py-2 rounded-md border bg-[#ff5309] text-white hover:scale-105 transistion duration-300 hover:text-white transition focus:outline-none  text-xs md:text-sm"
+          >
+            Reset
+          </button>
+          <a
+            href="https://github.com/hemanthk04/tammbola"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:scale-105 transistion duration-300"
+          >
+            <span className="underline underline-offset-2">GitHub</span> ↗
+          </a>
+        </div>
       </div>
-      <div className="flex flex-col lg:flex-row gap-16 items-center  justify-center w-full space-x-8 mx-auto mt-10 px-4">
+
+      <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-center  justify-center w-full mx-auto mt-8 px-4">
         {/* //new number space */}
         <div className="flex flex-col items-center">
           <div className="w-64 h-64 md:w-96 md:h-96 rounded-full border-8 md:border-[12px] border-gray-200 flex items-center justify-center">
@@ -57,7 +71,7 @@ export default function App() {
           {isTouchDevice ? (
             <button
               onClick={callNextNumber}
-              className="mt-4 px-8 py-2 bg-[#ff5309] text-white rounded-md text-sm font-semibold shadow-md active:scale-95 transition"
+              className="mt-4 px-8 py-2 bg-[#ff5309] text-white rounded-md text-sm font-semibold shadow-md focus:outline-none active:scale-95 hover:scale-105 transition"
             >
               Call Next Number
             </button>
